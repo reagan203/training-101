@@ -180,4 +180,264 @@ function program(num){
 
 }
 console.log(program(15))
-//
+                         //string manipulation
+// question 26: write a function that takes a string and rerturns number of vowels in the string
+function vowelNumber(str){
+    let count = 0;
+    let vowels = "aeiouAEIOU";
+    for(let i=0; i<str.length; i++){
+        if(vowels.indexOf(str[i])!== -1){
+            count++;
+        }
+    }
+    return count;
+}
+console.log(vowelNumber("Reagan Abraham"));
+//question 27: write a function that takes two strings and checks if they are anagrams
+function areAnagrams(str1, str2) {
+    // Remove any spaces and convert strings to lowercase
+    let normalizedStr1 = str1.replace(/\s+/g, '').toLowerCase();
+    let normalizedStr2 = str2.replace(/\s+/g, '').toLowerCase();
+
+    // Sort the characters in both strings
+    let sortedStr1 = normalizedStr1.split('').sort().join('');
+    let sortedStr2 = normalizedStr2.split('').sort().join('');
+
+    // Compare the sorted strings
+    if (sortedStr1 === sortedStr2) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+// Example usage:
+console.log(areAnagrams("listen", "silent"));  // true
+console.log(areAnagrams("hello", "world"));    // false
+// question 28 : write a function that capitalizes the first letter of each word in a strin
+function toCapital(string){
+    let words = string.split(" ");
+    let capitalizedWords = [];
+    for(let i=0; i<words.length; i++){
+        capitalizedWords.push(words[i].charAt(0).toUpperCase() + words[i].slice(1));
+    }
+    return capitalizedWords.join(" ");
+} 
+console.log(toCapital("i am going to go to the party tonight"))
+// question 29: create a function that counts number of words in a sentence
+function wordCount(sentence){
+    let words = sentence.split(" ");
+    return words.length;
+}
+console.log(wordCount("I am going to go to the party tonight"))
+// question 30: write a function that finds and returns the longest word in a sentence
+function longWord(superSent){
+    let words = superSent.split(" ");
+    let longestWord = words[0];
+    for(let i=1; i<words.length; i++){
+        if(words[i].length > longestWord.length){
+            longestWord = words[i];
+        }
+    }
+    return longestWord;
+}
+console.log(longWord("I am going to go to the party tonight"))
+//                              //DOM manipulation
+// // question 31: write a program that changes the background of a webpage when a button is clicked
+// const colors = ['red', 'green', 'blue', 'purple', 'orange', 'yellow', 'pink', 'cyan'];
+
+// document.getElementById('colorButton').addEventListener('click', function() {
+//     // Select a random color from the array
+//     const randomColor = colors[Math.floor(Math.random() * colors.length)];
+//     // Change the background color of the body
+//     document.body.style.backgroundColor = randomColor;
+// });
+// // question 32 : create a button that when clicked adds a new list item to an unorderd list
+// document.getElementById('addButton').addEventListener('click', function() {
+//     // Get the input value from the text field
+//     const newItemText = document.getElementById('newItemInput').value;
+
+//     // Create a new list item element
+//     const newItem = document.createElement('li');
+//     newItem.textContent = newItemText;
+
+//     // Append the new item to the unordered list
+//     const list = document.getElementById('list');
+//     list.appendChild(newItem);
+// });
+// // question 33: write a program that displays an alert with the text of an input field when a button is clicked
+// document.getElementById('alertButton').addEventListener('click', function() {
+//     // Get the input value from the text field
+//     const inputText = document.getElementById('inputField').value;
+
+//     // Display an alert with the input text
+//     alert(inputText);
+// });
+// // question 34 : create a program that toggles the visibility of a paragraph when a button is clicked
+// document.getElementById('toggleButton').addEventListener('click', function() {
+//     // Get the paragraph element
+//     const paragraph = document.getElementById('paragraph');
+
+//     // Toggle the visibility of the paragraph
+//     paragraph.style.display = paragraph.style.display === 'none'? 'block' : 'none';
+// })
+// // question 35: write a function that changes the text content in a div component when a mouse hovers over it
+// function changeTextOnHover() {
+//     // Get the div element
+//     const div = document.getElementById('div');
+
+//     // Change the text content on mouse hover
+//     div.addEventListener('mouseenter', function() {
+//         div.textContent = 'Hovered!';
+//     });
+
+//     // Reset the text content on mouse leave
+//     div.addEventListener('mouseleave', function() {
+//         div.textContent = 'Hover over me!';
+//     });
+// }
+                        // Arrays and Higher-order functions
+// question 36: write a function that takes an array of numbers and returns the arry with each number squared
+function squareNumbers(arr) {
+    // Use the map() method to create a new array with each number squared
+    return arr.map(function(num) {
+        return num * num;
+    });
+}
+// Example usage:
+const numberss = [1, 2, 3, 4, 5];
+const squaredNumbers = squareNumbers(numberss);
+console.log(squaredNumbers);  // Output: [1, 4, 9, 16, 25]
+// question 37:create a function that filters out all odd numbers from an array
+function filterOddNumbers(arr) {
+    let result = []; // Create an empty array to store the filtered numbers
+    
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] % 2 !== 0) {  // Check if the number is odd
+            result.push(arr[i]);  // Add the odd number to the result array
+        }
+    }
+
+    return result +" odd numbers"; // Return the array containing only odd numbers
+}
+
+// Example usage:
+const numberrs = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const oddNumbers = filterOddNumbers(numberrs);
+console.log(oddNumbers);  // Output: [1, 3, 5, 7, 9]
+// question 38: write a program that sorts an array of string alphabetically
+function sortStringsAlphabetically(arr) {
+    return arr.sort();  // The sort() method sorts the array of strings alphabetically by default
+}
+
+// Example usage:
+const strings = ["banana", "apple", "orange", "grape", "mango"];
+const sortedStrings = sortStringsAlphabetically(strings);
+console.log(sortedStrings);  // Output: ["apple", "banana", "grape", "mango", "orange"]
+// question 39: Create a function that finds the sum of all the elements in an array using reduce()
+// function sumArray(arr) {
+//     return arr.reduce(function(accumulator, currentValue) {
+//         return accumulator + currentValue;
+//     }, 0);  // Start the accumulation with 0
+// }
+
+// // Example usage:
+// const numbeers = [1, 2, 3, 4, 5];
+// const sum = sumArray(numbeers);
+// console.log(sum);  // Output: 15
+// // question 40 : write a program that flattens an array
+function flattenArray(arr) {
+    let result = []; // Create an empty array to store the flattened elements
+    
+    for (let i = 0; i < arr.length; i++) {
+        // Check if the current element is an array
+        if (Array.isArray(arr[i])) {
+            // Recursively flatten the nested array
+            result = result.concat(flattenArray(arr[i]));
+        } else {
+            // Add the element to the result array
+            result.push(arr[i]);
+        }
+    }
+
+    return result;  // Return the flattened array
+}
+                  //miscellenious
+// quiestion 41: write a function that returns a random number between 1 and 100
+function getRandomNumber() {
+    return Math.floor(Math.random() * 100) ;  // Use Math.random() to generate a random number between 0 and 1, then multiply by 100 to get a number between 0 and 100, and finally use Math.floor() to round down to the nearest integer
+}
+// Example usage:
+console.log(getRandomNumber());  // Output: a random number between 1 and 100
+// question 42: create a function that generates colours in hexadecimal format
+function getRandomHexColor() {
+    // Generate a random number between 0 and 16777215 (hexadecimal FFFFFF)
+    const randomColor = Math.floor(Math.random() * 0xFFFFFF);
+    
+    // Convert the random number to a hexadecimal string and pad with leading zeros if needed
+    const hexColor = `#${randomColor.toString(16).padStart(6, '0')}`;
+
+    return hexColor;
+}
+
+// Example usage:
+console.log(getRandomHexColor());  // Output: a random hexadecimal color code, e.g., "#a3c2f0"
+// question 43: write a program that shuffles an array of numbers randomly
+const randomlyShuffle = [1, 12, 33, 44, 5, 566];
+
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        // Generate a random index from 0 to i
+        const j = Math.floor(Math.random() * (i + 1));
+        
+        // Swap elements at indices i and j
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+
+// Example usage:
+console.log(shuffleArray(randomlyShuffle));  // Output: the shuffled array
+// question 44; a function that changes a word to a palarelogram
+function isPalindrome(str) {
+    // Normalize the string by removing non-alphanumeric characters and converting to lowercase
+    const normalizedStr = str.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+
+    // Check if the normalized string is equal to its reverse
+    const reversedStr = normalizedStr.split('').reverse().join('');
+    
+    return normalizedStr === reversedStr;
+}
+
+// Example usage:
+console.log(isPalindrome("A man, a plan, a canal, Panama"));  // Output: true
+console.log(isPalindrome("hello"));  // Output: false
+// question 45: Write a program that generates a random password with a specified length.
+function generateRandomPassword(length) {
+    // Define the character sets to use for the password
+    const uppercaseLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const lowercaseLetters = 'abcdefghijklmnopqrstuvwxyz';
+    const numbers = '0123456789';
+    const specialCharacters = '!@#$%^&*()_+[]{}|;:,.<>?';
+    
+    // Combine all character sets into one string
+    const allCharacters = uppercaseLetters + lowercaseLetters + numbers + specialCharacters;
+
+    let password = '';
+    
+    // Ensure the length is at least 1
+    if (length < 5) {
+        console.log("too short try a longer password please")
+    }
+
+    // Generate the password by selecting random characters from allCharacters
+    for (let i = 0; i < length; i++) {
+        const randomIndex = Math.floor(Math.random() * allCharacters.length);
+        password += allCharacters[randomIndex];
+    }
+
+    return password;
+}
+
+// Example usage:
+console.log(generateRandomPassword(43));  // Output: a randomly generated password of length 12
